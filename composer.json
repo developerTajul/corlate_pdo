@@ -1,0 +1,25 @@
+{
+    "name": "user/corlate-mvc",
+    "description": "this is a desc",
+    "type": "project",
+    "license": "GTL",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "App/Base/helper.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "developerTajul",
+            "email": "developer.tajul@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php"   : "7.1.0",
+        "vlucas/phpdotenv": "5.4.x-dev"
+    }
+}

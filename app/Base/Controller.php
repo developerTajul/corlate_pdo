@@ -14,8 +14,7 @@ class Controller{
         $servername     = "localhost";
         $username       = "root";
         $password       = "";
-        $dbname         = "corlate-pdo";
-        $dbname         = "corlate-pdo4";
+        $dbname         = "corlate-pdo3";
 
         $category_tbl = 'categories';
 
@@ -37,17 +36,17 @@ class Controller{
           /**
            * Create table if not exits
            */
-
-          $category_table ="CREATE table $category_tbl(
-          ID INT( 11 ) AUTO_INCREMENT PRIMARY KEY,
-          Prename VARCHAR( 50 ) NOT NULL, 
-          Name VARCHAR( 250 ) NOT NULL,
-          StreetA VARCHAR( 150 ) NOT NULL, 
-          StreetB VARCHAR( 150 ) NOT NULL, 
-          StreetC VARCHAR( 150 ) NOT NULL, 
-          County VARCHAR( 100 ) NOT NULL,
-          Postcode VARCHAR( 50 ) NOT NULL,
-          Country VARCHAR( 50 ) NOT NULL);" ;
+          $category_table ="CREATE TABLE IF NOT EXISTS $category_tbl(
+          id INT( 2 ) AUTO_INCREMENT PRIMARY KEY,
+          name VARCHAR( 255 ) NOT NULL, 
+          slug VARCHAR( 255 ) NOT NULL, 
+          excerpt VARCHAR( 150 ) NULL, 
+          content VARCHAR( 150 ) NULL, 
+          thumbnail VARCHAR( 250 ) NOT NULL,
+          status INT( 1 ) NOT NULL DEFAULT 0,
+          created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+          )";
           $con->exec($category_table);
 
 

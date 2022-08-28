@@ -14,7 +14,7 @@ class Controller{
         $servername     = "localhost";
         $username       = "root";
         $password       = "";
-        $dbname         = "corlate-pdo3";
+        $dbname         = "corlate-pdo4555";
 
         $category_tbl = 'categories';
 
@@ -33,9 +33,22 @@ class Controller{
           $con->query("CREATE DATABASE IF NOT EXISTS $dbname");
           $con->query("use $dbname");
 
+          $category_table ="CREATE TABLE IF NOT EXISTS $category_tbl(
+            id INT( 2 ) AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR( 255 ) NOT NULL, 
+            slug VARCHAR( 255 ) NOT NULL, 
+            excerpt TEXT NULL, 
+            content TEXT NULL, 
+            thumbnail VARCHAR( 250 ) NULL,
+            status tinyint( 1 ) NOT NULL DEFAULT 0,
+            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            )ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
+            $con->exec($category_table);
+
+
           /**
            * Create table if not exits
-           */
           $category_table ="CREATE TABLE IF NOT EXISTS $category_tbl(
           id INT( 2 ) AUTO_INCREMENT PRIMARY KEY,
           name VARCHAR( 255 ) NOT NULL, 
@@ -43,12 +56,12 @@ class Controller{
           excerpt VARCHAR( 150 ) NULL, 
           content VARCHAR( 150 ) NULL, 
           thumbnail VARCHAR( 250 ) NOT NULL,
-          status INT( 1 ) NOT NULL DEFAULT 0,
+          status VARCHAR( 1 ) NOT NULL,
           created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
           updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
           )";
           $con->exec($category_table);
-
+          */
 
 
 
